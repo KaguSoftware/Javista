@@ -14,7 +14,7 @@ export function TopBar({
     <div className="shrink-0 px-4.5 pt-2 pb-2.5 flex items-center justify-between gap-2.5 bg-bg border-b-2 border-green">
       <button type="button" onClick={onTopClick} className="flex items-center gap-2.5 cursor-pointer border-0 bg-transparent p-0">
         <div className="w-[54px] h-[54px] bg-white rounded-full grid place-items-center overflow-hidden shrink-0">
-          <Image src="/upperdeck-logo.png" alt="Upperdeck" width={54} height={54} priority />
+          <Image src="/javista-logo.svg" alt="Javista" width={54} height={54} priority />
         </div>
         <div>
           <div className="font-bowlby text-[18px] leading-[0.9] text-green tracking-[-0.5px] uppercase">

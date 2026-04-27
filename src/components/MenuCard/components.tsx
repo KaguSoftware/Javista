@@ -1,4 +1,4 @@
-import type { MenuCardProps } from "./types";
+﻿import type { MenuCardProps } from "./types";
 import { BLOB_BG_BY_FILL } from "./constants";
 
 const NAME_SIZE: Record<string, string> = {
@@ -14,7 +14,7 @@ export function MenuCard({ card, index, onOpen }: MenuCardProps) {
   const isOrange = card.fill === "orange-fill";
 
   const cardBase =
-    "w-full h-full text-ink p-2 border-2 border-green cursor-pointer flex flex-col transition-transform duration-250 ease-[cubic-bezier(0.2,0.8,0.2,1)] will-change-transform active:scale-[1.04] active:rotate-0";
+    "w-full h-full text-ink p-2 border border-green rounded-2xl cursor-pointer flex flex-col transition-transform duration-250 ease-[cubic-bezier(0.2,0.8,0.2,1)] will-change-transform active:scale-[1.04] active:rotate-0";
   const cardFill = isGreen
     ? "bg-green border-green"
     : isOrange
@@ -53,7 +53,7 @@ export function MenuCard({ card, index, onOpen }: MenuCardProps) {
         onClick={() => onOpen(card)}
       >
         <div className="w-full aspect-square grid place-items-center relative overflow-hidden mb-1.5">
-          <div className="absolute inset-[6%]" style={{ background: blobBg }} />
+          <div className="absolute inset-[4%]" style={{ background: blobBg }} />
           {card.image_url ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img

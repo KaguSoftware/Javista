@@ -1,7 +1,6 @@
-# Upperdeck Menu
+# Javista
 
-Public phone-style menu (Next.js 16 + React 19 + Tailwind v4) plus an admin panel
-backed by Supabase. Two roles: `admin` (platform) and `owner` (restaurant).
+Public phone-style menu and admin panel for Javista — a specialty coffee shop. Built with Next.js 16, React 19, Tailwind v4, and Supabase.
 
 ## Setup
 

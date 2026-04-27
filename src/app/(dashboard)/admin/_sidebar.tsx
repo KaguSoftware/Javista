@@ -51,11 +51,11 @@ export function AdminShell({
           className="flex items-center gap-2.5 px-4 py-4 border-b-2 border-green"
         >
           <div className="w-11 h-11 bg-white rounded-full grid place-items-center overflow-hidden shrink-0">
-            <Image src="/upperdeck-logo.png" alt="" width={44} height={44} priority />
+            <Image src="/javista-logo.svg" alt="" width={44} height={44} priority />
           </div>
           <div>
             <div className="font-bowlby text-[15px] leading-[0.9] text-green tracking-[-0.5px] uppercase">
-              UPPER<span className="text-orange">DECK</span>
+              JA<span className="text-orange">VISTA</span>
             </div>
             <div className="text-[8px] tracking-[0.28em] font-bold text-green/80 uppercase mt-0.5">
               Admin
@@ -111,7 +111,7 @@ export function AdminShell({
             <span className="block w-5 h-0.5 bg-green" />
           </button>
           <div className="font-bowlby text-[15px] leading-none text-green tracking-[-0.5px] uppercase">
-            UPPER<span className="text-orange">DECK</span>
+            JA<span className="text-orange">VISTA</span>
           </div>
         </header>
 

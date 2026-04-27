@@ -2,7 +2,7 @@ import Link from "next/link";
 import { signIn } from "./actions";
 import { LoginSubmitButton } from "./submit-button";
 
-export const metadata = { title: "Sign in · Upperdeck" };
+export const metadata = { title: "Sign in · Javista" };
 
 export default async function LoginPage({
   searchParams,
@@ -16,7 +16,7 @@ export default async function LoginPage({
       <div className="w-full max-w-sm">
         <Link href="/" className="block mb-8">
           <div className="font-bowlby text-[42px] leading-[0.85] text-green tracking-[-1px] uppercase">
-            UPPER<span className="text-orange">DECK</span>
+            JA<span className="text-orange">VISTA</span>
           </div>
           <div className="text-[10px] tracking-[0.32em] font-bold text-green opacity-80 uppercase mt-1">
             Admin

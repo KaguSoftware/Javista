@@ -26,7 +26,7 @@ export default async function AdminDashboard({
 
   return (
     <>
-      <PageHeader title="Dashboard" subtitle="Upperdeck American Diner" />
+      <PageHeader title="Dashboard" subtitle="Javista Specialty Coffee" />
 
       {error === "forbidden" && (
         <div className="bg-orange text-white text-[11px] font-extrabold uppercase tracking-[0.12em] px-3 py-2 mb-6">

@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Bowlby_One, Inter } from "next/font/google";
+import { Fredoka, Inter } from "next/font/google";
 import "../../globals.css";
 import { locales, defaultLocale } from "@/i18n/config";
 import type { Locale } from "@/i18n/config";
 
-const bowlbyOne = Bowlby_One({
+const bowlbyOne = Fredoka({
   variable: "--font-bowlby-one",
   subsets: ["latin"],
-  weight: "400",
+  weight: ["600", "700"],
 });
 
 const inter = Inter({
@@ -17,8 +17,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Upperdeck American Diner",
-  description: "Burgers, waffles & whatever else.",
+  title: "Javista · Specialty Coffee",
+  description: "Coffee, matcha, and slow mornings.",
 };
 
 export function generateStaticParams() {
