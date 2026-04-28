@@ -91,21 +91,21 @@ export function ItemModal({
             <div className="font-extrabold text-[9px] tracking-[0.28em] text-orange uppercase mb-1.5">
               {item.cat}{item.spicy ? ` · 🌶 ${spicyLabel}` : ""}
             </div>
-            <div className="font-bowlby text-[30px] leading-[0.92] text-green uppercase tracking-[-0.8px] mb-2.5">
+            <div className="font-bowlby text-[30px] leading-[0.92] text-ink uppercase tracking-[-0.8px] mb-2.5">
               {item.name}
             </div>
             {item.hook && (
-              <div className="font-bold text-[11px] tracking-[0.18em] text-green uppercase opacity-85 mb-2">
+              <div className="font-bold text-[11px] tracking-[0.18em] text-ink/70 uppercase mb-2">
                 {item.hook}
               </div>
             )}
             {item.desc && (
-              <div className="text-[12px] leading-relaxed text-green/80 mb-3.5">
+              <div className="text-[12px] leading-relaxed text-ink/65 mb-3.5">
                 {item.desc}
               </div>
             )}
             <div className="flex justify-between items-center py-2.5 border-t-2 border-b-2 border-green mb-3.5">
-              <span className="font-extrabold text-[9px] tracking-[0.28em] text-green uppercase">{priceLabel}</span>
+              <span className="font-extrabold text-[9px] tracking-[0.28em] text-ink/60 uppercase">{priceLabel}</span>
               <span className="font-bowlby text-[24px] text-orange">{item.price} ₺</span>
             </div>
             <button

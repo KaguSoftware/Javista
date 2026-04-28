@@ -25,13 +25,13 @@ export function MenuCard({ card, index, onOpen }: MenuCardProps) {
     ? "text-bg"
     : isOrange
     ? "text-white"
-    : "text-green";
+    : "text-ink";
 
   const descColor = isGreen
     ? "text-bg opacity-85"
     : isOrange
     ? "text-white opacity-95"
-    : "text-green opacity-[0.82]";
+    : "text-ink opacity-[0.65]";
 
   return (
     <div

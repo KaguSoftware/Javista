@@ -17,7 +17,7 @@ export function Hero({
         collapsed ? "max-h-0 pt-0 pb-0" : "max-h-50 pt-3.5 pb-2",
       ].join(" ")}
     >
-      <h1 className="font-bowlby text-[46px] leading-[0.86] text-green tracking-[-1.5px] uppercase">
+      <h1 className="font-bowlby text-[46px] leading-[0.86] text-ink tracking-[-1.5px] uppercase">
         {headline1}
         <br />
         <span className="text-orange">{headline2}</span> &amp;
@@ -26,7 +26,7 @@ export function Hero({
         <br />
         {headline4}
       </h1>
-      <div className="mt-2 text-[9px] font-bold tracking-[0.28em] text-green uppercase flex justify-between">
+      <div className="mt-2 text-[9px] font-bold tracking-[0.28em] text-ink/60 uppercase flex justify-between">
         <span>{openHours}</span>
         <span>
           <b className="text-orange">{itemCount}</b> {itemsLabel}

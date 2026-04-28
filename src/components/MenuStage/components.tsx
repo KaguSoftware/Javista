@@ -90,11 +90,11 @@ export function MenuStage({ stageWidth, onOpen, stageRef, categories, items, ite
           <div
             data-cat={slug}
             className={[
-              "relative px-3.5 pb-2.5 flex items-baseline justify-between gap-2.5 border-b-2 border-green bg-bg",
+              "relative px-3.5 pb-2.5 flex items-baseline justify-between gap-2.5 border-b-2 border-ink/15 bg-bg",
               secIdx === 0 ? "pt-3.5" : "pt-3.5 mt-2 border-t-2",
             ].join(" ")}
           >
-            <span className="font-bowlby text-[22px] leading-[0.9] text-green uppercase tracking-[-0.5px]">
+            <span className="font-bowlby text-[22px] leading-[0.9] text-ink uppercase tracking-[-0.5px]">
               {name}
             </span>
             <span className="font-ui font-extrabold text-[9px] tracking-[0.28em] text-orange uppercase">
