@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #fff5d6;
-  --color-bg-deep: #f7e9b8;
+  --color-bg: #fefac8;
+  --color-bg-deep: #e7b584;
   --color-green: #6a7c59;
   --color-green-dark: #4a5940;
-  --color-orange: #5a3a22;
-  --color-ink: #3d2817;
+  --color-orange: #bd5d2d;
+  --color-ink: #b97c4c;
 
   --font-bowlby: var(--font-bowlby-one, 'Bowlby One', sans-serif);
   --font-ui: var(--font-inter-next, 'Inter', sans-serif);
@@ -15,9 +15,9 @@
 html,
 body {
   height: 100%;
-  background-color: #fff5d6;
+  background-color: #fefac8;
   font-family: var(--font-inter-next), sans-serif;
-  color: #3d2817;
+  color: #b97c4c;
 }
 
 body.no-scroll {

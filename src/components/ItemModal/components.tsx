@@ -12,7 +12,7 @@ export function ItemModal({
   addToOrderLabel,
 }: ItemModalProps) {
   const isOpen = item !== null;
-  const topBg = item?.fill === "orange-fill" ? "#e35d07" : "#395748";
+  const topBg = item?.fill === "orange-fill" ? "#bd5d2d" : "#e7b584";
 
   const sheetRef = useRef<HTMLDivElement>(null);
   const dragStartY = useRef<number | null>(null);
