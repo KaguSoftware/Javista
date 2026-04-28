@@ -59,18 +59,16 @@ export function ItemModal({
       {item && (
         <div
           ref={sheetRef}
-          className="w-full bg-bg border-t-4 border-green animate-[slideUp_0.25s_cubic-bezier(0.2,0.8,0.2,1)] max-h-[78%] overflow-hidden flex flex-col relative"
+          className="w-full bg-bg border-t-4 border-green animate-[slideUp_0.25s_cubic-bezier(0.2,0.8,0.2,1)] max-h-[78%] overflow-hidden flex flex-col relative cursor-grab active:cursor-grabbing select-none"
           style={{
             transform: `translateY(${dragOffset}px)`,
             transition: isDragging.current ? "none" : "transform 0.25s cubic-bezier(0.2,0.8,0.2,1)",
           }}
+          onMouseDown={(e) => { e.preventDefault(); handleDragStart(e.clientY); }}
+          onTouchStart={(e) => handleDragStart(e.touches[0].clientY)}
         >
-          {/* Drag handle */}
-          <div
-            className="flex justify-center items-center pt-2.5 pb-1 cursor-grab active:cursor-grabbing shrink-0 select-none"
-            onMouseDown={(e) => { e.preventDefault(); handleDragStart(e.clientY); }}
-            onTouchStart={(e) => handleDragStart(e.touches[0].clientY)}
-          >
+          {/* Drag handle indicator */}
+          <div className="flex justify-center items-center pt-2.5 pb-1 shrink-0">
             <div className="w-10 h-1 rounded-full bg-green/30" />
           </div>
 
