@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef, useState } from "react";
 import type { ItemModalProps } from "./types";
 
 export function ItemModal({
@@ -11,6 +14,36 @@ export function ItemModal({
   const isOpen = item !== null;
   const topBg = item?.fill === "orange-fill" ? "#e35d07" : "#395748";
 
+  const sheetRef = useRef<HTMLDivElement>(null);
+  const dragStartY = useRef<number | null>(null);
+  const [dragOffset, setDragOffset] = useState(0);
+  const isDragging = useRef(false);
+
+  function handleDragStart(clientY: number) {
+    dragStartY.current = clientY;
+    isDragging.current = true;
+  }
+
+  function handleDragMove(clientY: number) {
+    if (!isDragging.current || dragStartY.current === null) return;
+    const delta = clientY - dragStartY.current;
+    setDragOffset(Math.max(0, delta));
+  }
+
+  function handleDragEnd() {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+    const threshold = 120;
+    if (dragOffset >= threshold) {
+      setDragOffset(0);
+      dragStartY.current = null;
+      onClose();
+    } else {
+      setDragOffset(0);
+      dragStartY.current = null;
+    }
+  }
+
   return (
     <div
       className={[
@@ -18,9 +51,29 @@ export function ItemModal({
         isOpen ? "flex" : "hidden",
       ].join(" ")}
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
+      onMouseMove={(e) => handleDragMove(e.clientY)}
+      onMouseUp={() => handleDragEnd()}
+      onTouchMove={(e) => handleDragMove(e.touches[0].clientY)}
+      onTouchEnd={() => handleDragEnd()}
     >
       {item && (
-        <div className="w-full bg-bg border-t-4 border-green animate-[slideUp_0.25s_cubic-bezier(0.2,0.8,0.2,1)] max-h-[78%] overflow-hidden flex flex-col relative">
+        <div
+          ref={sheetRef}
+          className="w-full bg-bg border-t-4 border-green animate-[slideUp_0.25s_cubic-bezier(0.2,0.8,0.2,1)] max-h-[78%] overflow-hidden flex flex-col relative"
+          style={{
+            transform: `translateY(${dragOffset}px)`,
+            transition: isDragging.current ? "none" : "transform 0.25s cubic-bezier(0.2,0.8,0.2,1)",
+          }}
+        >
+          {/* Drag handle */}
+          <div
+            className="flex justify-center items-center pt-2.5 pb-1 cursor-grab active:cursor-grabbing shrink-0 select-none"
+            onMouseDown={(e) => { e.preventDefault(); handleDragStart(e.clientY); }}
+            onTouchStart={(e) => handleDragStart(e.touches[0].clientY)}
+          >
+            <div className="w-10 h-1 rounded-full bg-green/30" />
+          </div>
+
           <button
             type="button"
             onClick={onClose}
