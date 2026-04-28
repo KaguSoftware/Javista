@@ -8,7 +8,8 @@
       "Bash(npx tsc *)",
       "Bash(NEXT_PUBLIC_SUPABASE_URL=https://example.supabase.co NEXT_PUBLIC_SUPABASE_ANON_KEY=anon_key_placeholder_long_enough_to_pass_zod_validation SUPABASE_SERVICE_ROLE_KEY=service_role_key_placeholder_long_enough npx next build)",
       "Bash(python3 -c ' *)",
-      "PowerShell(Stop-Process -Force)"
+      "PowerShell(Stop-Process -Force)",
+      "Bash(git revert *)"
     ]
   }
 }
