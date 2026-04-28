@@ -2,7 +2,7 @@ import type { FilterPillsProps } from "./types";
 
 export function FilterPills({ items, activeId, onSelect, navRef }: FilterPillsProps) {
   return (
-    <nav ref={navRef} className="sticky top-0 z-10 shrink-0 py-2.5 pl-4.5 bg-bg border-t-2 border-b-2 border-ink/15 flex gap-1.5 overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+    <nav ref={navRef} className="shrink-0 py-2.5 pl-4.5 bg-bg border-t-2 border-b-2 border-ink/15 flex gap-1.5 overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       {items.map(({ id, label }) => {
         const isActive = id === activeId;
         return (

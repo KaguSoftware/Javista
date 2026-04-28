@@ -38,7 +38,6 @@ export function PhoneMenu({ messages: t, categories, items }: PhoneMenuProps) {
   const pillsNavRef = useRef<HTMLElement>(null);
   const isAutoScrollingRef = useRef(false);
   const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const slugTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useLayoutEffect(() => {
     const el = stageWrapRef.current;
@@ -81,12 +80,10 @@ export function PhoneMenu({ messages: t, categories, items }: PhoneMenuProps) {
       const target = stageRef.current?.querySelector<HTMLElement>(
         `[data-cat="${CSS.escape(slug)}"]`
       );
-      const wrap = stageWrapRef.current;
-      const pills = pillsNavRef.current;
-      if (target && wrap && pills) {
-        const wrapTop = wrap.getBoundingClientRect().top;
-        const targetTop = target.getBoundingClientRect().top;
-        wrap.scrollBy({ top: targetTop - wrapTop - pills.offsetHeight, behavior: "smooth" });
+      if (target) {
+        // offsetTop is relative to stageRef (the scroll container's only child),
+        // so it equals the exact scrollTop needed.
+        stageWrapRef.current?.scrollTo({ top: target.offsetTop, behavior: "smooth" });
       }
       btn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
       setTimeout(() => { isAutoScrollingRef.current = false; }, 800);
@@ -112,6 +109,8 @@ export function PhoneMenu({ messages: t, categories, items }: PhoneMenuProps) {
 
     const scrollTop = wrap.scrollTop;
 
+    // Hysteresis: collapse going down, but only re-open near the very top.
+    // This prevents the hero from toggling when the user is near the threshold.
     setHeroCollapsed((prev) => {
       if (!prev && scrollTop > COLLAPSE_AT) return true;
       if (prev && scrollTop < EXPAND_AT) return false;
@@ -120,22 +119,14 @@ export function PhoneMenu({ messages: t, categories, items }: PhoneMenuProps) {
 
     if (isAutoScrollingRef.current) return;
 
-    const pills = pillsNavRef.current;
-    const pillsBottom = pills
-      ? pills.getBoundingClientRect().bottom
-      : wrap.getBoundingClientRect().top;
-
     const headers = stage.querySelectorAll<HTMLElement>("[data-cat]");
     let current = "";
     headers.forEach((h) => {
-      if (h.getBoundingClientRect().top <= pillsBottom + 20) {
+      if (h.offsetTop - 20 <= scrollTop) {
         current = h.dataset.cat ?? "";
       }
     });
-
-    // Debounce to prevent flicker at category boundaries.
-    if (slugTimerRef.current) clearTimeout(slugTimerRef.current);
-    slugTimerRef.current = setTimeout(() => setActiveSlug(current), 80);
+    setActiveSlug(current);
   }, []);
 
   const pillItems = categories.map((c) => ({ id: c.slug, label: c.name }));
@@ -151,27 +142,28 @@ export function PhoneMenu({ messages: t, categories, items }: PhoneMenuProps) {
         brandSub={t.brand.sub}
         orderLabel={t.topbar.order}
       />
+      <Hero
+        collapsed={heroCollapsed}
+        itemCount={items.length}
+        headline1={t.hero.headline1}
+        headline2={t.hero.headline2}
+        headline3={t.hero.headline3}
+        headline4={t.hero.headline4}
+        openHours={t.hero.openHours}
+        itemsLabel={t.hero.items}
+      />
+      <FilterPills
+        items={pillItems}
+        activeId={activeSlug}
+        onSelect={handlePillSelect}
+        navRef={pillsNavRef}
+      />
       <div className="relative flex-1 min-h-0">
         <div
           ref={stageWrapRef}
           onScroll={handleScroll}
           className="h-full overflow-y-auto bg-bg [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          <Hero
-            itemCount={items.length}
-            headline1={t.hero.headline1}
-            headline2={t.hero.headline2}
-            headline3={t.hero.headline3}
-            headline4={t.hero.headline4}
-            openHours={t.hero.openHours}
-            itemsLabel={t.hero.items}
-          />
-          <FilterPills
-            items={pillItems}
-            activeId={activeSlug}
-            onSelect={handlePillSelect}
-            navRef={pillsNavRef}
-          />
           <MenuStage
             stageWidth={stageWidth}
             onOpen={setActiveItem}
